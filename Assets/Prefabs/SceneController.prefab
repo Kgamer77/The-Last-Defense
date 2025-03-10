@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3682007166061739259}
   - component: {fileID: 2268104979311893878}
   - component: {fileID: 5637658871696993095}
+  - component: {fileID: 2015788726450109909}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1376187251902538586, guid: 67f0b12cede12684fa24f790f7244916, type: 3}
+  spawnArea: {x: 0, y: 0}
 --- !u!114 &5637658871696993095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +62,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreLabel: {fileID: 0}
   settingsPopup: {fileID: 0}
+  timerLabel: {fileID: 0}
+--- !u!114 &2015788726450109909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690032744735606369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730b7e69032447e489598db877d38731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 60
+  timeRemaining: 0
+  isCountingDown: 0

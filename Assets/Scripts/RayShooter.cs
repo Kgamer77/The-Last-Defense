@@ -7,11 +7,13 @@ using UnityEngine.EventSystems;
 public class RayShooter : MonoBehaviour
 {
     private Camera cam;
+    private PlayerCharacter character;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
+        character = GetComponentInParent<PlayerCharacter>();
 
         // hide the cursor
         //Cursor.lockState = CursorLockMode.Locked;
@@ -54,10 +56,11 @@ public class RayShooter : MonoBehaviour
                 ReactiveTarget target = hitObj.GetComponent<ReactiveTarget>();
                 if (target != null) 
                 {
-                    if (target.deathAnim == null)
-                        Messenger.Broadcast(GameEvent.ENEMY_HIT);
+                    if (target.deathAnim != null)
+                        
                     Debug.Log("Target Hit!");
-                    target.ReactToHit();
+                    if (character != null)
+                        target.ReactToHit(character.getDamage());
                 }
                 else
                 {

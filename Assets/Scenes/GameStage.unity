@@ -438,6 +438,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780814675}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &802524972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7863228187267157656, guid: 234a8805b09200343b1b02d5d66e7578, type: 3}
+  m_PrefabInstance: {fileID: 1707011172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1117641256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,17 +457,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3682007166061739259, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.2
+    - target: {fileID: 2268104979311893878, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
+      propertyPath: spawnArea.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268104979311893878, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
+      propertyPath: spawnArea.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3682007166061739259, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
-      propertyPath: m_LocalPosition.y
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3682007166061739259, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682007166061739259, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.85
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3682007166061739259, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
       propertyPath: m_LocalRotation.w
@@ -490,6 +509,10 @@ PrefabInstance:
       propertyPath: scoreLabel
       value: 
       objectReference: {fileID: 1418670391}
+    - target: {fileID: 5637658871696993095, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
+      propertyPath: timerLabel
+      value: 
+      objectReference: {fileID: 802524972}
     - target: {fileID: 5637658871696993095, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
       propertyPath: settingsPopup
       value: 
@@ -544,10 +567,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

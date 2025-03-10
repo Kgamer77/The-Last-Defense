@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreLabel;
     [SerializeField] SettingsPopup settingsPopup;
+    [SerializeField] TMP_Text timerLabel;
 
     private int _score;
+    private CountDownTimer timer;
 
     private void OnEnable()
     {
-        Messenger.AddListener(GameEvent.ENEMY_HIT, OnEnemyHit);
+        Messenger<int>.AddListener(GameEvent.ENEMY_HIT, OnEnemyHit);
         Messenger<int>.AddListener(GameEvent.PURCHASE, OnPurchase);
     }
 
@@ -20,12 +23,12 @@ public class UIController : MonoBehaviour
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvent.ENEMY_HIT, OnEnemyHit);
+        Messenger<int>.RemoveListener(GameEvent.ENEMY_HIT, OnEnemyHit);
     }    
 
-    private void OnEnemyHit()
+    private void OnEnemyHit(int amount)
     {
-        _score += 1;
+        _score += amount;
         Messenger<int>.Broadcast(GameEvent.SCORE_CHANGED, _score);
         scoreLabel.text = _score.ToString();
     }
@@ -41,6 +44,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         _score = 100;
+        timer = GetComponent<CountDownTimer>();
         Messenger<int>.Broadcast(GameEvent.SCORE_CHANGED, _score);
         scoreLabel.text = _score.ToString();
         settingsPopup.Close();
@@ -50,6 +54,15 @@ public class UIController : MonoBehaviour
     void Update()
     {
         //scoreLabel.text = Time.realtimeSinceStartup.ToString();
+        if (timer.timeRemaining == 0)
+        {
+            timerLabel.text = "";
+        }
+        else
+        {
+            timerLabel.text = "Next Wave: " + timer.timeRemaining.ToString();
+        }
+
     }
 
     public void OnOpenSettings()

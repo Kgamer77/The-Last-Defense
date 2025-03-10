@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerCharacter : MonoBehaviour
 {
     private int health;
+    private int damage;
+    private int maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 5;
+        damage = 1;
+        maxHealth = 10;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -18,9 +22,9 @@ public class PlayerCharacter : MonoBehaviour
         
     }
 
-    public void Hurt(int damage)
+    public void Hurt(int incomingDamage)
     {
-        health -= damage;
+        health -= incomingDamage;
         Debug.Log($"Health: {health}");
     }
 
@@ -28,5 +32,10 @@ public class PlayerCharacter : MonoBehaviour
     public int getHealth() 
     {
         return health;
+    }
+
+    public int getDamage()
+    {
+        return damage;
     }
 }

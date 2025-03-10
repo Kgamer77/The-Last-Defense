@@ -9,10 +9,14 @@ public class DeviceOperator : MonoBehaviour
     public float radius = 1.5f;
     private int score;
 
+    private void OnEnable()
+    {
+        Messenger<int>.AddListener(GameEvent.SCORE_CHANGED, OnScoreChanged);
+    }
+
     private void Start()
     {
         score = 0;
-        Messenger<int>.AddListener(GameEvent.SCORE_CHANGED, OnScoreChanged);
     }
 
     void OnScoreChanged(int incoming)
@@ -25,7 +29,7 @@ public class DeviceOperator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F)) 
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, 1);
             foreach (Collider collider in hitColliders) 
             {
                 BarrierDevice barrierDevice = collider.GetComponent<BarrierDevice>();
