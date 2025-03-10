@@ -56,11 +56,12 @@ public class RayShooter : MonoBehaviour
                 ReactiveTarget target = hitObj.GetComponent<ReactiveTarget>();
                 if (target != null) 
                 {
-                    if (target.deathAnim != null)
-                        
-                    Debug.Log("Target Hit!");
-                    if (character != null)
-                        target.ReactToHit(character.getDamage());
+                    if (target.deathAnim == null)
+                    {
+                        Debug.Log("Target Hit!");
+                        if (character != null)
+                            target.ReactToHit(character.getDamage());
+                    }
                 }
                 else
                 {

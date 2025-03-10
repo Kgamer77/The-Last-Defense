@@ -459,7 +459,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2268104979311893878, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
       propertyPath: spawnArea.x
-      value: 25
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2268104979311893878, guid: 5c0196e999dfb934aaac3ff1745f5157, type: 3}
       propertyPath: spawnArea.y
