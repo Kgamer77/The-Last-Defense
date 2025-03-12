@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TLD Assets/TLD Scenes/credits.unity
     guid: 378b7843cbdc06643aef6d58e53c4b56
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/GloryScreen.unity
+    guid: 9f0ae653a45fa3342999e66cb3ab4301
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
