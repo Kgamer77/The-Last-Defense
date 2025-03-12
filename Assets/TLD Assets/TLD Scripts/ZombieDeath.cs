@@ -32,8 +32,8 @@ public class ZombieDeath : MonoBehaviour
             StatusCheck = 2;
             TheEnemy.GetComponent<Animation>().Stop("walk");
             TheEnemy.GetComponent<Animation>().Play("back_fall");
-            if (JumpScareMusic != null)
-                JumpScareMusic.Stop();
+            //if (JumpScareMusic != null)
+                //JumpScareMusic.Stop();
             if (AmbMusic != null)
                 AmbMusic.Play();
 

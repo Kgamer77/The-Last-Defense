@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -13,10 +14,15 @@ namespace StarterAssets
 	{
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 4.0f;
+		public float MoveSpeed = 5.0f;
 		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 6.0f;
-		[Tooltip("Rotation speed of the character")]
+		public float SprintSpeed = 7.0f;
+        [Tooltip("Dash speed of the character in m/s")]
+        public float SuperDashSpeed = 11.0f;
+		[Tooltip("Dash cooldown in seconds")]
+        public float SuperDashCooldown = 4.5f;
+		public bool IsSuperDashCooldown = false;
+        [Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
@@ -156,6 +162,13 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			if (_input.dash && !IsSuperDashCooldown)
+			{
+				targetSpeed = SuperDashSpeed;
+                Invoke("DashOnCooldown", SuperDashCooldown/2.0f);
+                Invoke("DashOffCooldown", SuperDashCooldown*1.5f);
+			}
+
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -196,6 +209,16 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+		}
+
+		private void DashOnCooldown()
+		{
+			IsSuperDashCooldown = true;
+		}
+
+		private void DashOffCooldown()
+		{
+			IsSuperDashCooldown = false;
 		}
 
 		private void JumpAndGravity()
