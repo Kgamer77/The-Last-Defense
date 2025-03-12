@@ -4,5 +4,25 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/SplashScreen.unity
+    guid: b55fc87bfed8cd34b97a14d7ba7b44bf
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/MainMenu.unity
+    guid: 70d7e13f0d9949c46a8e20dbaa21368a
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/Scene1.unity
+    guid: 392bd890987de294abfb1a9a05865af9
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/GameOver.unity
+    guid: fa068fb527361db40b0925eea1c5ac5d
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/IntroScene.unity
+    guid: 21a749489a4a0d8469d451673b278f09
+  - enabled: 1
+    path: Assets/TLD Assets/TLD Scenes/credits.unity
+    guid: 378b7843cbdc06643aef6d58e53c4b56
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
+  m_UseUCBPForAssetBundles: 0
