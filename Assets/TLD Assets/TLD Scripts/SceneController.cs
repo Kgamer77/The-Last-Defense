@@ -13,6 +13,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject AmmoPickup;
     [SerializeField] GameObject HealthPickup;
+    [SerializeField] GameObject EndTrigger;
 
 
     // Current Wave
@@ -31,23 +32,24 @@ public class SceneController : MonoBehaviour
 
     private bool spawning;
 
-    private FirePistol playerGun;
-
     // Start is called before the first frame update
     void Start()
     {
         wave = 0;
         maxSpawnCount = 20;
         waveBreakTimer = GetComponent<CountDownTimer>();
-        waveBreakTimer.duration = 15;
+        waveBreakTimer.duration = 30;
         waveBreakTimer.Begin();
         Messenger.AddListener(GameEvent.ENEMY_KILLED, () => { 
             curEnemiesCount--; 
-            if (curEnemiesCount == 0) { waveBreakTimer.Begin(); }
+            if (curEnemiesCount == 0) { 
+                waveBreakTimer.Begin(); 
+                if (wave != 0 && wave % 5 == 0)
+                {
+                    EndTrigger.GetComponent<EndLevelTrigger>().EnterChoice();
+                }
+            }
         });
-
-        playerGun = player.GetComponentInChildren<FirePistol>();
-        if (playerGun != null) { Debug.Log("Successfully got FirePistol"); }
     }
 
     // Update is called once per frame
@@ -65,7 +67,13 @@ public class SceneController : MonoBehaviour
         {
             OnBreakEnd();
         }
+        else if (wave % 5 == 0 && waveBreakTimer.timeRemaining == 4 && waveBreakTimer.isCountingDown && wave != 0)
+        {
+            EndTrigger.GetComponent<EndLevelTrigger>().EndChoice();
+        }
 
+
+        // Second failsafe because it why risk soft locking the game
         if (curEnemiesCount < 0)
             curEnemiesCount = 0;
  
@@ -74,6 +82,10 @@ public class SceneController : MonoBehaviour
     private void OnBreakEnd()
     {
         wave++;
+        if (wave % 5 == 0)
+            waveBreakTimer.duration = 30;
+        else
+            waveBreakTimer.duration = 15;
         curEnemiesCount = 0;
         spawnCount = 5 + wave + wave * UnityEngine.Random.Range(0, 2);
         waveBreakTimer.isCountingDown = false;
